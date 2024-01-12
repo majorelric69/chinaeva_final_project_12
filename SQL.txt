@@ -1,0 +1,16 @@
+SELECT c.login,
+COUNT(o.id) as "Quantity"
+FROM "Couriers" AS c
+INNER JOIN "Orders" AS o ON c.id = o."courierId"
+WHERE o."inDelivery" = True
+GROUP BY c.login;
+
+
+SELECT track,
+CASE
+WHEN finished = TRUE THEN 2
+WHEN canсelled = TRUE THEN -1
+WHEN inDelivery = TRUE THEN 1
+ELSE 0
+END
+FROM "Orders";
